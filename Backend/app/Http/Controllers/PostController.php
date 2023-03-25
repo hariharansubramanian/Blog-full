@@ -7,9 +7,10 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    public function index()
+    public function getPosts()
     {
-        return Post::all();
+        $posts = Post::with('postActions')->get();
+        return response()->json($posts);
     }
 
     public function store(Request $request)
