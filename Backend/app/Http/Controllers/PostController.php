@@ -2,38 +2,35 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
+use App\Services\PostService;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
+/**
+ * This controller handles the getting, submitting and updating blog posts and their actions
+ */
 class PostController extends Controller
 {
-    public function getPosts()
+    /**
+     * @var PostService The PostService instance used for handling blog post related operations
+     */
+    protected PostService $postService;
+
+    public function __construct(PostService $postService)
     {
-        $posts = Post::with('postActions')->get();
-        return response()->json($posts);
+        $this->postService = $postService;
     }
 
-    public function store(Request $request)
+    /**
+     * Get all posts along with user interest details.
+     *
+     * This method retrieves all posts, their like/dislike stats and the requesting user's interest on each post
+     * @param Request $request The incoming HTTP request.
+     * @return JsonResponse A JSON response containing {@see \App\Contracts\PostResult} objects with the posts and user interest details.
+     */
+    public function getPosts(Request $request)
     {
-        $request->validate([
-            'title' => ['required'],
-            'author' => ['required'],
-            'content' => ['required'],
-        ]);
-
-        return Post::create($request->validated());
-    }
-
-    public function update(Request $request, Post $post)
-    {
-        $request->validate([
-            'title' => ['required'],
-            'author' => ['required'],
-            'content' => ['required'],
-        ]);
-
-        $post->update($request->validated());
-
-        return $post;
+        $result = $this->postService->getPostsWithUserInterest($request);
+        return response()->json($result);
     }
 }

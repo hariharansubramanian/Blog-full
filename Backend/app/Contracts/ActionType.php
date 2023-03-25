@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Models;
-
-use Illuminate\Validation\Rules\Enum;
+namespace App\Contracts;
 
 enum ActionType: int
 {

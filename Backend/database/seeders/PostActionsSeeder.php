@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\ActionType;
+use App\Contracts\ActionType;
 use App\Models\Post;
 use App\Models\PostAction;
 use Faker\Factory as Faker;
