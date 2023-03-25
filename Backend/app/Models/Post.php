@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
-    protected $table = 'blog.posts';
+    protected $table = 'posts';
     protected $fillable = [
         'title',
         'author',

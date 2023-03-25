@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('lookup.action_types', function (Blueprint $table) {
+        Schema::create('lookup_action_types', function (Blueprint $table) {
             $table->unsignedInteger('type');
             $table->string('value', 50);
 
@@ -18,6 +18,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('lookup.action_types');
+        Schema::dropIfExists('lookup_action_types');
     }
 };

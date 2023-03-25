@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PostAction extends Model
 {
-    protected $table = 'blog.post_actions';
+    protected $table = 'post_actions';
     protected $fillable = [
         'post_id',
         'user_ip_address',

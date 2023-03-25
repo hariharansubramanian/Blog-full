@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Schema;
 return new class extends Migration {
     public function up(): void
     {
-        Schema::create('blog.post_actions', function (Blueprint $table) {
+        Schema::create('post_actions', function (Blueprint $table) {
             $table->unsignedBigInteger('post_id');
             $table->unsignedInteger('action_type');
             $table->string('user_ip_address', 32);
@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->primary(['post_id', 'user_ip_address', 'action_type', 'created_at']);
             $table->foreign('post_id')
                 ->references('id')
-                ->on('blog.posts')
+                ->on('posts')
                 ->onDelete('cascade');
 
             // indexes
@@ -27,6 +27,6 @@ return new class extends Migration {
 
     public function down(): void
     {
-        Schema::dropIfExists('blog.post_actions');
+        Schema::dropIfExists('post_actions');
     }
 };
