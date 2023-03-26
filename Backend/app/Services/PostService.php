@@ -37,6 +37,26 @@ class PostService
     }
 
     /**
+     * Creates a new post
+     * @param array $data The data to create the post with
+     * @return array The ID, created at and updated at of the created post
+     */
+    public function createPost(array $data): array
+    {
+        $post = new Post();
+        $post->title = $data['title'];
+        $post->author = $data['author'];
+        $post->content = $data['content'];
+        $post->save();
+
+        return [
+            'id' => $post->id,
+            'createdAt' => $post->created_at,
+            'updatedAt' => $post->updated_at
+        ];
+    }
+
+    /**
      * Gets the user's interest in a post by looking at their last like/dislike action
      * @param string $userIpAddress The requesting user's IP address
      * @param Post $post The post to get the user's interest in

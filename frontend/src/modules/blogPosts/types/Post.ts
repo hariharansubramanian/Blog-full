@@ -1,36 +1,26 @@
 export interface IPost {
-    id: number
+    id?: number
     title: string
     author: string
     content: string
-    created_at: string
+    created_at?: string
     updated_at?: string
 }
 
 export class Post implements IPost {
-    id: number;
+    id?: number;
     title: string;
     author: string;
     content: string;
-    created_at: string;
+    created_at?: string;
     updated_at?: string
 
-    constructor(post: IPost) {
-        this.id = post.id;
-        this.title = post.title;
-        this.author = post.author;
-        this.content = post.content;
-        this.created_at = post.created_at;
-        this.updated_at = post.updated_at;
-    }
-
-    static default(): Post {
-        return new Post({
-            id: 0,
-            title: '',
-            author: '',
-            content: '',
-            created_at: '',
-        })
+    constructor(title: string, author: string, content: string, created_at?: string, id?: number, updated_at?: string) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.content = content;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
     }
 }

@@ -4,6 +4,7 @@ import {PostsListSelector} from "../state/postAtoms";
 import StatusAlert from "../../common/components/StatusAlert";
 import {Box} from "@mui/material";
 import {PostListItem} from "./PostListItem";
+import {orderBy} from "lodash";
 
 export function PostsList() {
     const posts = useRecoilValue(PostsListSelector)
@@ -12,7 +13,7 @@ export function PostsList() {
 
     return (
         <Box>
-            {posts.map((postData, index) => (
+            {orderBy(posts, x => x.post.created_at, 'desc').map((postData, index) => (
                 <PostListItem key={index} postData={postData}/>
             ))}
         </Box>

@@ -1,5 +1,5 @@
 import {UserPostInterest} from "./UserPostInterest";
-import {Post} from "./Post";
+import {IPost, Post} from "./Post";
 
 export interface PostResponse {
     userIpAddress: string,
@@ -19,19 +19,14 @@ export class PostData implements IPostData {
     post: Post;
     userPostInterest: UserPostInterest;
 
-    constructor(postResult: IPostData) {
-        this.post = new Post(postResult.post);
-        this.likeCount = postResult.likeCount;
-        this.dislikeCount = postResult.dislikeCount;
-        this.userPostInterest = postResult.userPostInterest;
+    constructor(post: IPost, likeCount: number, dislikeCount: number, userPostInterest: UserPostInterest) {
+        this.post = new Post(post.title, post.author, post.content, post.created_at, post.id, post.updated_at);
+        this.likeCount = likeCount;
+        this.dislikeCount = dislikeCount;
+        this.userPostInterest = userPostInterest;
     }
 
-    static default(): PostData {
-        return new PostData({
-            post: Post.default(),
-            likeCount: 0,
-            dislikeCount: 0,
-            userPostInterest: UserPostInterest.Neutral
-        })
+    public static fromResponse(postResult: IPostData): PostData {
+        return new PostData(postResult.post, postResult.likeCount, postResult.dislikeCount, postResult.userPostInterest)
     }
 }

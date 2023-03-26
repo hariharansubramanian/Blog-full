@@ -39,7 +39,7 @@ export const PostsSelector = selectorFamily<IPostData | undefined, number>({
 
             // If it's a new post, we need to add into the PostIds[] atom
             set(PostIds, (prevPostIds) => {
-                const newPostId = newVal.post.id
+                const newPostId = newVal.post.id!
                 return [...prevPostIds, newPostId]
             })
         }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Services\PostService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -41,5 +42,25 @@ class PostController extends Controller
         ];
 
         return response()->json($response);
+    }
+
+    /**
+     * Creates a new blog post
+     * @param Request $request The incoming HTTP request.
+     * @return JsonResponse A JSON response containing the ID, creation and update timestamps of the newly created post.
+     */
+    public function createPost(Request $request)
+    {
+        // validate fields
+        $data = $request->validate([
+            'title' => 'required|max:50',
+            'author' => 'required|max:50',
+            'content' => 'required|max:10000'
+        ]);
+
+        // create post
+        $newPostDetails = $this->postService->createPost($data);
+
+        return response()->json($newPostDetails);
     }
 }
