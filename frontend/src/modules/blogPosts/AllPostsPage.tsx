@@ -2,9 +2,9 @@ import React, {useEffect} from "react";
 import {useFetchPosts} from "./hooks/useFetchPosts";
 import {CircularProgressIndicator} from "../common/components/ProgressIndicator";
 import StatusAlert from "../common/components/StatusAlert";
-import {PostsList} from "./components/PostsList";
 import {PostsListSelector} from "./state/postAtoms";
 import {useRecoilValue} from "recoil";
+import {PostsAndCreateNew} from "./components/PostsAndCreateNew";
 
 export const AllPostsPage = () => {
     const {fetchPosts, isLoading, isError} = useFetchPosts();
@@ -20,7 +20,7 @@ export const AllPostsPage = () => {
         <>
             {isLoading && <CircularProgressIndicator text={'Fetching blog posts..'}/>}
             {isError && <StatusAlert text={'Error fetching blog posts'} variant={'outlined'} severity={'error'}/>}
-            {!isLoading && !isError && <PostsList/>}
+            {!isLoading && !isError && <PostsAndCreateNew/>}
         </>
     );
 };
