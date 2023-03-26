@@ -1,6 +1,6 @@
 import {useState} from "react";
 import {useSnackbar} from "notistack";
-import {PostResult} from "../types/PostResult";
+import {PostResponse} from "../types/PostData";
 import {usePostService} from "./usePostService";
 
 export const useFetchPosts = () => {
@@ -8,7 +8,7 @@ export const useFetchPosts = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const {enqueueSnackbar} = useSnackbar()
-    const {savePosts} = usePostService()
+    const {savePosts, saveUserIpAddress} = usePostService()
 
     const fetchPosts = async () => {
         if (isLoading) return
@@ -18,7 +18,10 @@ export const useFetchPosts = () => {
         try {
             const response = await fetch(getPostsUri);
             const jsonData = await response.json();
-            savePosts(jsonData as PostResult[])
+            const data = jsonData as PostResponse;
+
+            savePosts(data.posts)
+            saveUserIpAddress(data.userIpAddress)
         } catch (error) {
             setIsError(true)
             enqueueSnackbar('Error fetching posts', {variant: 'error'})

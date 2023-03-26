@@ -6,7 +6,6 @@ use App\Contracts\ActionType;
 use App\Contracts\PostResult;
 use App\Contracts\UserPostInterest;
 use App\Models\Post;
-use Illuminate\Http\Request;
 
 // TODO: Dependency inject this class as an implementation of IPostService to enable configurable app behavior and flexibility in testing
 class PostService
@@ -14,11 +13,8 @@ class PostService
     /**
      * Gets all posts with the requesting user's interest in each post
      */
-    public function getPostsWithUserInterest(Request $request): array
+    public function getPostsWithUserInterest(string $userIpAddress): array
     {
-        // Retrieve the requesting user's IP address to check his blog post interest
-        $userIpAddress = $request->ip();
-
         $posts = Post::all();
 
         return $posts

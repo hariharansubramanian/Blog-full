@@ -29,7 +29,17 @@ class PostController extends Controller
      */
     public function getPosts(Request $request)
     {
-        $result = $this->postService->getPostsWithUserInterest($request);
-        return response()->json($result);
+        // Retrieve the requesting user's IP address to check his blog post interest
+        $userIpAddress = $request->ip();
+
+        // get posts with requesting user's interest
+        $posts = $this->postService->getPostsWithUserInterest($userIpAddress);
+
+        $response = [
+            'posts' => $posts,
+            'userIpAddress' => $userIpAddress
+        ];
+
+        return response()->json($response);
     }
 }

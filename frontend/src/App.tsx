@@ -8,6 +8,7 @@ import {AllPostsPage} from "./modules/blogPosts/AllPostsPage";
 import {SinglePostPage} from "./modules/blogPosts/SinglePostPage";
 import {SnackbarProvider} from "notistack";
 import {RecoilRoot} from "recoil";
+import Grid from "@mui/material/Grid";
 
 function App() {
     return (
@@ -15,11 +16,17 @@ function App() {
             <ThemeProvider theme={darkTheme}>
                 <SnackbarProvider/>
                 <div className="App">
-                    <AppHeader/>
-                    <Routes>
-                        <Route index element={<AllPostsPage/>}/>
-                        <Route path="/posts/:id" element={<SinglePostPage/>}/>
-                    </Routes>
+                    <Grid container spacing={2} direction={'column'}>
+                        <Grid item>
+                            <AppHeader/>
+                        </Grid>
+                        <Grid item>
+                            <Routes>
+                                <Route index element={<AllPostsPage/>}/>
+                                <Route path="/posts/:id" element={<SinglePostPage/>}/>
+                            </Routes>
+                        </Grid>
+                    </Grid>
                 </div>
             </ThemeProvider>
         </RecoilRoot>

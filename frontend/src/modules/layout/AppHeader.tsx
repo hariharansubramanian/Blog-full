@@ -1,8 +1,12 @@
 import {AppBar, Box, Button, IconButton, Toolbar, Typography} from "@mui/material";
 import React from "react";
 import {AccountCircle, LibraryBooks} from "@mui/icons-material";
+import {useRecoilValue} from "recoil";
+import {UserIpAddressAtom} from "../blogPosts/state/userIpAddressAtom";
 
 export function AppHeader() {
+    const userIpAddress = useRecoilValue(UserIpAddressAtom)
+    console.log(userIpAddress)
     return <Box sx={{flexGrow: 1}}>
         <AppBar position="static">
             <Toolbar>
@@ -13,8 +17,7 @@ export function AppHeader() {
                     <AccountCircle/>
                 </IconButton>
                 <Typography variant="body1">
-                    {/* TODO: get user ip address from state*/}
-                    {"user ip address"}
+                    {userIpAddress}
                 </Typography>
             </Toolbar>
 

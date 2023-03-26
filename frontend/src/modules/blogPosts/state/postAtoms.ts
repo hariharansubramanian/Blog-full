@@ -1,5 +1,5 @@
 import {atom, atomFamily, DefaultValue, selector, selectorFamily} from "recoil";
-import {IPostResult} from "../types/PostResult";
+import {IPostData} from "../types/PostData";
 
 /**
  * This atom is used to store the ids of the posts.
@@ -12,7 +12,7 @@ export const PostIds = atom<number[]>({
 /**
  * This is an atom family of blog posts
  */
-export const PostAtoms = atomFamily<IPostResult | undefined, number>({
+export const PostAtoms = atomFamily<IPostData | undefined, number>({
     key: 'postsAtomFamily',
     default: (id: number) => undefined
 });
@@ -20,7 +20,7 @@ export const PostAtoms = atomFamily<IPostResult | undefined, number>({
 /**
  * This is a selector family used to get and set blog posts and update the PostIds atom
  */
-export const PostsSelector = selectorFamily<IPostResult | undefined, number>({
+export const PostsSelector = selectorFamily<IPostData | undefined, number>({
     key: 'postsSelector',
     get: (id: number) =>
         ({get}) => get(PostAtoms(id)),
@@ -48,12 +48,12 @@ export const PostsSelector = selectorFamily<IPostResult | undefined, number>({
 /**
  * This is a selector used to get all the posts from the PostsAtomFamily
  */
-export const PostsListSelector = selector<IPostResult[]>({
+export const PostsListSelector = selector<IPostData[]>({
     key: 'postsListSelector',
     get: ({get}) => {
         const postIds = get(PostIds);
         return postIds
             .map((postId) => get(PostsSelector(postId)))
-            .filter((post) => post !== undefined) as IPostResult[];
+            .filter((post) => post !== undefined) as IPostData[];
     },
 });
