@@ -1,0 +1,101 @@
+openapi: 3.0.3
+info:
+  title: 'Blog-full API'
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://localhost:8000'
+paths:
+  /api/posts:
+    get:
+      summary: 'Get all posts along with user interest details.'
+      operationId: getAllPostsAlongWithUserInterestDetails
+      description: "This method retrieves all posts, their like/dislike stats and the requesting user's interest on each post"
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    post:
+                      id: 1378
+                      title: 'Suscipit suscipit consequatur repellendus ipsum.'
+                      author: leta.mann@example.net
+                      content: 'Voluptatem voluptas consequatur ut iste harum eligendi. Odio iste itaque voluptate ratione voluptatem occaecati officia. Non dolorem quia laboriosam rerum deserunt sint. Aperiam eum occaecati repellendus molestiae aperiam explicabo.\n\nNon sapiente odit temporibus sunt eos aperiam voluptates. Rerum officiis molestias iure expedita. Et aut excepturi nihil sequi sed.\n\nDolores perferendis voluptatem enim. Sed rerum voluptates deleniti.\n\nCorporis minus quis laborum quis et adipisci earum. Est neque et neque vitae tempore consequatur. Et blanditiis numquam neque nulla saepe.\n\nVoluptatem illum et ea voluptas labore. Nesciunt itaque rerum blanditiis quisquam. Qui assumenda aliquid voluptates ut dolor nesciunt sit. Eos dolore voluptatibus officia architecto soluta labore doloremque.'
+                      created_at: '2023-03-25T19:28:08.000000Z'
+                      updated_at: '2023-03-25T19:28:08.000000Z'
+                    likeCount: 2
+                    dislikeCount: 0
+                    userPostInterest: neutral
+                  -
+                    post:
+                      id: 1379
+                      title: 'Iusto veritatis iure laboriosam optio minus.'
+                      author: volkman.dewitt@example.net
+                      content: 'Ut autem mollitia assumenda aperiam nemo. Ut iste nesciunt explicabo ut. Sint aliquid nam illo exercitationem laudantium cumque. Voluptatem nobis tempora odio perspiciatis iure. Voluptatem modi qui ratione quaerat hic.\n\nRerum incidunt perferendis harum alias sed. Est est explicabo explicabo voluptas voluptas quae quis. Velit nemo delectus omnis a.\n\nCorrupti et maxime qui ut. Ut nihil debitis quam dicta doloribus autem asperiores. Quam culpa est sunt consequatur nesciunt. Molestiae dolores vel et.\n\nSequi beatae sint sequi voluptatem sed autem. Sint consectetur consequatur praesentium temporibus non. Iure rerum ducimus illum odit vel.\n\nVoluptatum eveniet sint omnis. Sed id maiores eum. Nulla nostrum necessitatibus est amet.'
+                      created_at: '2023-03-25T19:28:08.000000Z'
+                      updated_at: '2023-03-25T19:28:08.000000Z'
+                    likeCount: 2
+                    dislikeCount: 0
+                    userPostInterest: neutral
+                  -
+                    post:
+                      id: 1380
+                      title: 'Dolores vero ipsa fuga quia quam recusandae.'
+                      author: vdonnelly@example.com
+                      content: 'Ducimus velit in nam unde qui quidem omnis. Illo veritatis nam aliquid libero dolores expedita quasi provident. Asperiores nihil et et qui eum. Cupiditate facere quos eaque fugiat accusantium aut.\n\nVoluptatum enim fugit occaecati quis ab natus. Molestiae sit necessitatibus necessitatibus quia. Et cupiditate aut ipsum est dolorem. Molestiae eaque sunt qui ad atque. Optio non facilis repellat dignissimos laudantium illo error.\n\nEt accusantium temporibus qui eaque. Aliquid voluptatum qui et quia libero sit. Sunt adipisci culpa dolor commodi quod.\n\nQuia veniam rerum at. Omnis aliquam quas ipsam perspiciatis laudantium. Harum optio est quia qui.\n\nSint quod aliquid quae aliquam at sequi sequi. Aut minima accusamus iste explicabo neque sit.'
+                      created_at: '2023-03-25T19:28:08.000000Z'
+                      updated_at: '2023-03-25T19:28:08.000000Z'
+                    likeCount: 1
+                    dislikeCount: 1
+                    userPostInterest: neutral
+                  -
+                    post:
+                      id: 1381
+                      title: 'Eos molestias soluta quis.'
+                      author: heather70@example.net
+                      content: 'Excepturi explicabo magni doloremque nisi quis et maxime. Facere sequi soluta ut quo sed quo. Omnis est fugit inventore occaecati quasi non.\n\nVoluptatem ex blanditiis eum tenetur magnam. Dolores accusamus dolore et fuga. Enim qui sint facilis facilis qui non excepturi. In dolor illo commodi eveniet numquam. Quasi in corrupti doloribus et nihil.\n\nAut odio quos dicta aut nisi nesciunt reiciendis. In consequatur hic laudantium ut. Et ducimus ad laborum. Tenetur provident consequatur distinctio blanditiis et sed.\n\nEt natus praesentium perferendis nihil et. Quos temporibus ipsa suscipit fugiat quos et autem numquam. Voluptatem sunt sed unde aut. In voluptatem quam neque corrupti iure debitis quia.\n\nEt vel corporis corrupti porro quia. Sint assumenda dolor tempora expedita reiciendis repudiandae. Nulla quia quaerat aperiam non. Rerum nihil voluptatem et enim ut minus at.'
+                      created_at: '2023-03-25T19:28:08.000000Z'
+                      updated_at: '2023-03-25T19:28:08.000000Z'
+                    likeCount: 4
+                    dislikeCount: 0
+                    userPostInterest: neutral
+                  -
+                    post:
+                      id: 1382
+                      title: 'Nihil excepturi assumenda vel nemo.'
+                      author: tremblay.andrew@example.net
+                      content: 'Tempora ipsam rerum cupiditate repellat. Incidunt ea veritatis accusantium. A voluptas sint eveniet et occaecati.\n\nEst sed ut sequi. Voluptatem est excepturi aut autem suscipit odit quis. Autem repellat repellendus est nam. Ex libero voluptatum et.\n\nHarum quisquam delectus sint maiores fugiat. Eligendi qui expedita dolor odit maiores. Vitae natus velit iste praesentium assumenda. Distinctio qui eos in cumque quisquam blanditiis.\n\nEius laborum vel eius qui. Necessitatibus aut sunt voluptatibus id ut accusantium. Fugiat enim tempora mollitia qui sequi praesentium. Impedit error nemo eos quis voluptatem vero aut. Quam vel et voluptatem animi.\n\nAut illo excepturi labore quo ut error eligendi officia. Enim culpa sed quia. Enim atque ut blanditiis ut fugit sint sit. Itaque temporibus et dolor consequatur molestiae. Unde suscipit inventore molestiae praesentium eligendi tempora eius.'
+                      created_at: '2023-03-25T19:28:08.000000Z'
+                      updated_at: '2023-03-25T19:28:08.000000Z'
+                    likeCount: 2
+                    dislikeCount: 0
+                    userPostInterest: neutral
+      tags:
+        - Endpoints
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''

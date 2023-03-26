@@ -22,8 +22,7 @@ class PostController extends Controller
     }
 
     /**
-     * Get all posts along with user interest details.
-     *
+     * Get posts along with requesting user's interest in each.
      * This method retrieves all posts, their like/dislike stats and the requesting user's interest on each post
      * @param Request $request The incoming HTTP request.
      * @return JsonResponse A JSON response containing {@see \App\Contracts\PostResult} objects with the posts and user interest details.
