@@ -5,7 +5,7 @@ import {CreatedPostResult} from "../types/CreatedPostResult";
 import {IPostData} from "../types/PostData";
 
 export const useCreatePost = () => {
-    const createPostUri = process.env.REACT_APP_BACKEND_BASE_URL + '/api/posts/create'
+    const createPostUri = `${process.env.REACT_APP_BACKEND_BASE_URL}/api/posts/create`
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const [savedPost, setSavedPost] = useState<IPostData | undefined>(undefined)

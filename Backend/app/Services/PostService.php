@@ -6,6 +6,8 @@ use App\Contracts\ActionType;
 use App\Contracts\PostResult;
 use App\Contracts\UserPostInterest;
 use App\Models\Post;
+use App\Models\PostAction;
+use Carbon\Carbon;
 
 // TODO: Dependency inject this class as an implementation of IPostService to enable configurable app behavior and flexibility in testing
 class PostService
@@ -55,6 +57,24 @@ class PostService
             'updatedAt' => $post->updated_at
         ];
     }
+
+    /**
+     * Creates a new post action by a user
+     * @param Post $post The post to create an action for
+     * @param string $userIpAddress The requesting user's IP address
+     * @param int $actionType The type of action to create
+     * @return void Returns nothing
+     */
+    public function createPostAction(Post $post, string $userIpAddress, int $actionType)
+    {
+        $postAction = new PostAction();
+        $postAction->post_id = $post->id;
+        $postAction->user_ip_address = $userIpAddress;
+        $postAction->action_type = $actionType;
+        $postAction->created_at = Carbon::now()->format('Y-m-d H:i:s.u'); // TODO: Fix this, database refuses to store microseconds - this is a breaking bug when users interact with posts within the same second
+        $postAction->save();
+    }
+
 
     /**
      * Gets the user's interest in a post by looking at their last like/dislike action

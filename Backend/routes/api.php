@@ -16,3 +16,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/posts', [PostController::class, 'getPosts']);
 Route::post('/posts/create', [PostController::class, 'createPost']);
+Route::post('/posts/{postId}/action', [PostController::class, 'createPostAction']);

@@ -4,7 +4,7 @@ import {PostResponse} from "../types/PostData";
 import {usePostService} from "./usePostService";
 
 export const useFetchPosts = () => {
-    const getPostsUri = process.env.REACT_APP_BACKEND_BASE_URL + '/api/posts'
+    const getPostsUri = `${process.env.REACT_APP_BACKEND_BASE_URL}/api/posts`
     const [isLoading, setIsLoading] = useState(false)
     const [isError, setIsError] = useState(false)
     const {enqueueSnackbar} = useSnackbar()

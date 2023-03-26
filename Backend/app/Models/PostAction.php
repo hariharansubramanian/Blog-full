@@ -16,6 +16,7 @@ class PostAction extends Model
         'post_id',
         'user_ip_address',
         'action_type',
+        'created_at'
     ];
 
     protected $casts = [

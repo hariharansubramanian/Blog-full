@@ -27,6 +27,7 @@ export const SinglePostPage = () => {
             </Box>
             <Box sx={{marginTop: 3}} display={'flex'} justifyContent={'center'}>
                 <PostActions
+                    postId={postData.post.id!}
                     userPostInterest={postData.userPostInterest}
                     likeCount={postData.likeCount}
                     dislikeCount={postData.dislikeCount}

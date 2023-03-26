@@ -27,6 +27,7 @@ export const PostListItem = ({postData}: PostListItemProps) => {
             </CardContent>
             <CardActions>
                 <PostActions
+                    postId={postData.post.id!}
                     userPostInterest={postData.userPostInterest}
                     likeCount={postData.likeCount}
                     dislikeCount={postData.dislikeCount}

@@ -63,4 +63,19 @@ class PostController extends Controller
 
         return response()->json($newPostDetails);
     }
+
+    /**
+     * Performs an action on a blog post
+     * @param Request $request The incoming HTTP request.
+     * @param int $postId The ID of the post to perform the action on
+     * @return void Returns nothing
+     */
+    public function createPostAction(Request $request, int $postId)
+    {
+        // Retrieve the requesting user's IP address to check his blog post interest
+        $userIpAddress = $request->ip();
+        $post = Post::findOrFail($postId);
+
+        $this->postService->createPostAction($post, $userIpAddress, $request->actionType);
+    }
 }
