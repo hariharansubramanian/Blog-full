@@ -23,4 +23,14 @@ export class Post implements IPost {
         this.created_at = post.created_at;
         this.updated_at = post.updated_at;
     }
+
+    static default(): Post {
+        return new Post({
+            id: 0,
+            title: '',
+            author: '',
+            content: '',
+            created_at: '',
+        })
+    }
 }

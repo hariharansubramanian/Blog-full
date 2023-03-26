@@ -6,18 +6,23 @@ import {darkTheme} from "./AppTheme";
 import {Route, Routes} from "react-router-dom";
 import {AllPostsPage} from "./modules/blogPosts/AllPostsPage";
 import {SinglePostPage} from "./modules/blogPosts/SinglePostPage";
+import {SnackbarProvider} from "notistack";
+import {RecoilRoot} from "recoil";
 
 function App() {
     return (
-        <ThemeProvider theme={darkTheme}>
-            <div className="App">
-                <AppHeader/>
-                <Routes>
-                    <Route index element={<AllPostsPage/>}/>
-                    <Route path="/posts/:id" element={<SinglePostPage/>}/>
-                </Routes>
-            </div>
-        </ThemeProvider>
+        <RecoilRoot>
+            <ThemeProvider theme={darkTheme}>
+                <SnackbarProvider/>
+                <div className="App">
+                    <AppHeader/>
+                    <Routes>
+                        <Route index element={<AllPostsPage/>}/>
+                        <Route path="/posts/:id" element={<SinglePostPage/>}/>
+                    </Routes>
+                </div>
+            </ThemeProvider>
+        </RecoilRoot>
     )
 }
 
