@@ -3,8 +3,8 @@ import {createTheme} from "@mui/material";
 /**
  * The styling theme for the application.
  */
-export const darkTheme = createTheme({
+export const theme = createTheme({
     palette: {
-        mode: 'dark',
+        mode: 'light',
     },
 });

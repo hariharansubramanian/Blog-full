@@ -14,7 +14,7 @@ class PostFactory extends Factory
         return [
             'title' => $this->faker->text(50),
             'author' => $this->faker->unique()->safeEmail,
-            'content' => implode('\n\n', $this->faker->paragraphs(5)),
+            'content' => implode('\n\n', $this->faker->paragraphs(10)),
             'created_at' => now(),
         ];
     }

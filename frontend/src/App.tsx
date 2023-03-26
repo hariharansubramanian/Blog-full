@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {AppHeader} from "./modules/layout/AppHeader";
 import {ThemeProvider} from "@mui/material";
-import {darkTheme} from "./AppTheme";
+import {theme} from "./AppTheme";
 import {Route, Routes} from "react-router-dom";
 import {AllPostsPage} from "./modules/blogPosts/AllPostsPage";
 import {SinglePostPage} from "./modules/blogPosts/SinglePostPage";
@@ -13,7 +13,7 @@ import Grid from "@mui/material/Grid";
 function App() {
     return (
         <RecoilRoot>
-            <ThemeProvider theme={darkTheme}>
+            <ThemeProvider theme={theme}>
                 <SnackbarProvider/>
                 <div className="App">
                     <Grid container spacing={2} direction={'column'}>
