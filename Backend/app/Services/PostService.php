@@ -71,7 +71,6 @@ class PostService
         $postAction->post_id = $post->id;
         $postAction->user_ip_address = $userIpAddress;
         $postAction->action_type = $actionType;
-        $postAction->created_at = Carbon::now()->format('Y-m-d H:i:s.u'); // TODO: Fix this, database refuses to store microseconds - this is a breaking bug when users interact with posts within the same second
         $postAction->save();
     }
 

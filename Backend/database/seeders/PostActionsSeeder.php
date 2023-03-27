@@ -52,7 +52,7 @@ class PostActionsSeeder extends Seeder
     private function generateRandomActionsInCyclicPattern(string $ipAddress): array
     {
         $actions = [];
-        $maxActions = rand(5, 15);
+        $maxActions = rand(10, 30);
         $timestamp = now();
 
         $cycle = [

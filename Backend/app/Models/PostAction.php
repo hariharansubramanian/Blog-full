@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Contracts\ActionType;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,7 +17,6 @@ class PostAction extends Model
         'post_id',
         'user_ip_address',
         'action_type',
-        'created_at'
     ];
 
     protected $casts = [
@@ -26,5 +26,23 @@ class PostAction extends Model
     public function post(): BelongsTo
     {
         return $this->belongsTo(Post::class);
+    }
+
+    public function asDateTime($value)
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        try {
+            return Carbon::createFromFormat('Y-m-d H:i:s.u', $value);
+        } catch (\InvalidArgumentException $e) {
+            return parent::asDateTime($value);
+        }
+    }
+
+    public function getDateFormat()
+    {
+        return 'Y-m-d H:i:s.u';
     }
 }
