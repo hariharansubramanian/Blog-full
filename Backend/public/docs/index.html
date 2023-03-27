@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Blog-full API</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+
+    <link rel="stylesheet"
+          href="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/styles/obsidian.min.css">
+    <script src="https://unpkg.com/@highlightjs/cdn-assets@11.6.0/highlight.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jets/0.14.1/jets.min.js"></script>
+
+    <style id="language-style">
+        /* starts out as display none and is replaced with js later  */
+                    body .content .bash-example code { display: none; }
+                    body .content .javascript-example code { display: none; }
+            </style>
+
+    <script>
+        var baseUrl = "http://localhost:8000";
+        var useCsrf = Boolean();
+        var csrfUrl = "/sanctum/csrf-cookie";
+    </script>
+    <script src="../docs/js/tryitout-4.17.0.js"></script>
+
+    <script src="../docs/js/theme-default-4.17.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+
+<a href="#" id="nav-button">
+    <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image"/>
+    </span>
+</a>
+<div class="tocify-wrapper">
+    
+            <div class="lang-selector">
+                                            <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                            <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                    </div>
+    
+    <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+
+    <div id="toc">
+                    <ul id="tocify-header-introduction" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="introduction">
+                    <a href="#introduction">Introduction</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-authenticating-requests" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="authenticating-requests">
+                    <a href="#authenticating-requests">Authenticating requests</a>
+                </li>
+                            </ul>
+                    <ul id="tocify-header-endpoints" class="tocify-header">
+                <li class="tocify-item level-1" data-unique="endpoints">
+                    <a href="#endpoints">Endpoints</a>
+                </li>
+                                    <ul id="tocify-subheader-endpoints" class="tocify-subheader">
+                                                    <li class="tocify-item level-2" data-unique="endpoints-GETapi-posts">
+                                <a href="#endpoints-GETapi-posts">Get all posts along with user interest details.</a>
+                            </li>
+                                                                        </ul>
+                            </ul>
+            </div>
+
+    <ul class="toc-footer" id="toc-footer">
+                    <li style="padding-bottom: 5px;"><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li style="padding-bottom: 5px;"><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+    </ul>
+
+    <ul class="toc-footer" id="last-updated">
+        <li>Last updated: March 26, 2023</li>
+    </ul>
+</div>
+
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1 id="introduction">Introduction</h1>
+<aside>
+    <strong>Base URL</strong>: <code>http://localhost:8000</code>
+</aside>
+<p>This documentation aims to provide all the information you need to work with our API.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+
+        <h1 id="authenticating-requests">Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="endpoints">Endpoints</h1>
+
+    
+
+                                <h2 id="endpoints-GETapi-posts">Get all posts along with user interest details.</h2>
+
+<p>
+</p>
+
+<p>This method retrieves all posts, their like/dislike stats and the requesting user's interest on each post</p>
+
+<span id="example-requests-GETapi-posts">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request GET \
+    --get "http://localhost:8000/api/posts" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8000/api/posts"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-GETapi-posts">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 58
+access-control-allow-origin: *
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">[
+    {
+        &quot;post&quot;: {
+            &quot;id&quot;: 1378,
+            &quot;title&quot;: &quot;Suscipit suscipit consequatur repellendus ipsum.&quot;,
+            &quot;author&quot;: &quot;leta.mann@example.net&quot;,
+            &quot;content&quot;: &quot;Voluptatem voluptas consequatur ut iste harum eligendi. Odio iste itaque voluptate ratione voluptatem occaecati officia. Non dolorem quia laboriosam rerum deserunt sint. Aperiam eum occaecati repellendus molestiae aperiam explicabo.\\n\\nNon sapiente odit temporibus sunt eos aperiam voluptates. Rerum officiis molestias iure expedita. Et aut excepturi nihil sequi sed.\\n\\nDolores perferendis voluptatem enim. Sed rerum voluptates deleniti.\\n\\nCorporis minus quis laborum quis et adipisci earum. Est neque et neque vitae tempore consequatur. Et blanditiis numquam neque nulla saepe.\\n\\nVoluptatem illum et ea voluptas labore. Nesciunt itaque rerum blanditiis quisquam. Qui assumenda aliquid voluptates ut dolor nesciunt sit. Eos dolore voluptatibus officia architecto soluta labore doloremque.&quot;,
+            &quot;created_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;
+        },
+        &quot;likeCount&quot;: 2,
+        &quot;dislikeCount&quot;: 0,
+        &quot;userPostInterest&quot;: &quot;neutral&quot;
+    },
+    {
+        &quot;post&quot;: {
+            &quot;id&quot;: 1379,
+            &quot;title&quot;: &quot;Iusto veritatis iure laboriosam optio minus.&quot;,
+            &quot;author&quot;: &quot;volkman.dewitt@example.net&quot;,
+            &quot;content&quot;: &quot;Ut autem mollitia assumenda aperiam nemo. Ut iste nesciunt explicabo ut. Sint aliquid nam illo exercitationem laudantium cumque. Voluptatem nobis tempora odio perspiciatis iure. Voluptatem modi qui ratione quaerat hic.\\n\\nRerum incidunt perferendis harum alias sed. Est est explicabo explicabo voluptas voluptas quae quis. Velit nemo delectus omnis a.\\n\\nCorrupti et maxime qui ut. Ut nihil debitis quam dicta doloribus autem asperiores. Quam culpa est sunt consequatur nesciunt. Molestiae dolores vel et.\\n\\nSequi beatae sint sequi voluptatem sed autem. Sint consectetur consequatur praesentium temporibus non. Iure rerum ducimus illum odit vel.\\n\\nVoluptatum eveniet sint omnis. Sed id maiores eum. Nulla nostrum necessitatibus est amet.&quot;,
+            &quot;created_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;
+        },
+        &quot;likeCount&quot;: 2,
+        &quot;dislikeCount&quot;: 0,
+        &quot;userPostInterest&quot;: &quot;neutral&quot;
+    },
+    {
+        &quot;post&quot;: {
+            &quot;id&quot;: 1380,
+            &quot;title&quot;: &quot;Dolores vero ipsa fuga quia quam recusandae.&quot;,
+            &quot;author&quot;: &quot;vdonnelly@example.com&quot;,
+            &quot;content&quot;: &quot;Ducimus velit in nam unde qui quidem omnis. Illo veritatis nam aliquid libero dolores expedita quasi provident. Asperiores nihil et et qui eum. Cupiditate facere quos eaque fugiat accusantium aut.\\n\\nVoluptatum enim fugit occaecati quis ab natus. Molestiae sit necessitatibus necessitatibus quia. Et cupiditate aut ipsum est dolorem. Molestiae eaque sunt qui ad atque. Optio non facilis repellat dignissimos laudantium illo error.\\n\\nEt accusantium temporibus qui eaque. Aliquid voluptatum qui et quia libero sit. Sunt adipisci culpa dolor commodi quod.\\n\\nQuia veniam rerum at. Omnis aliquam quas ipsam perspiciatis laudantium. Harum optio est quia qui.\\n\\nSint quod aliquid quae aliquam at sequi sequi. Aut minima accusamus iste explicabo neque sit.&quot;,
+            &quot;created_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;
+        },
+        &quot;likeCount&quot;: 1,
+        &quot;dislikeCount&quot;: 1,
+        &quot;userPostInterest&quot;: &quot;neutral&quot;
+    },
+    {
+        &quot;post&quot;: {
+            &quot;id&quot;: 1381,
+            &quot;title&quot;: &quot;Eos molestias soluta quis.&quot;,
+            &quot;author&quot;: &quot;heather70@example.net&quot;,
+            &quot;content&quot;: &quot;Excepturi explicabo magni doloremque nisi quis et maxime. Facere sequi soluta ut quo sed quo. Omnis est fugit inventore occaecati quasi non.\\n\\nVoluptatem ex blanditiis eum tenetur magnam. Dolores accusamus dolore et fuga. Enim qui sint facilis facilis qui non excepturi. In dolor illo commodi eveniet numquam. Quasi in corrupti doloribus et nihil.\\n\\nAut odio quos dicta aut nisi nesciunt reiciendis. In consequatur hic laudantium ut. Et ducimus ad laborum. Tenetur provident consequatur distinctio blanditiis et sed.\\n\\nEt natus praesentium perferendis nihil et. Quos temporibus ipsa suscipit fugiat quos et autem numquam. Voluptatem sunt sed unde aut. In voluptatem quam neque corrupti iure debitis quia.\\n\\nEt vel corporis corrupti porro quia. Sint assumenda dolor tempora expedita reiciendis repudiandae. Nulla quia quaerat aperiam non. Rerum nihil voluptatem et enim ut minus at.&quot;,
+            &quot;created_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;
+        },
+        &quot;likeCount&quot;: 4,
+        &quot;dislikeCount&quot;: 0,
+        &quot;userPostInterest&quot;: &quot;neutral&quot;
+    },
+    {
+        &quot;post&quot;: {
+            &quot;id&quot;: 1382,
+            &quot;title&quot;: &quot;Nihil excepturi assumenda vel nemo.&quot;,
+            &quot;author&quot;: &quot;tremblay.andrew@example.net&quot;,
+            &quot;content&quot;: &quot;Tempora ipsam rerum cupiditate repellat. Incidunt ea veritatis accusantium. A voluptas sint eveniet et occaecati.\\n\\nEst sed ut sequi. Voluptatem est excepturi aut autem suscipit odit quis. Autem repellat repellendus est nam. Ex libero voluptatum et.\\n\\nHarum quisquam delectus sint maiores fugiat. Eligendi qui expedita dolor odit maiores. Vitae natus velit iste praesentium assumenda. Distinctio qui eos in cumque quisquam blanditiis.\\n\\nEius laborum vel eius qui. Necessitatibus aut sunt voluptatibus id ut accusantium. Fugiat enim tempora mollitia qui sequi praesentium. Impedit error nemo eos quis voluptatem vero aut. Quam vel et voluptatem animi.\\n\\nAut illo excepturi labore quo ut error eligendi officia. Enim culpa sed quia. Enim atque ut blanditiis ut fugit sint sit. Itaque temporibus et dolor consequatur molestiae. Unde suscipit inventore molestiae praesentium eligendi tempora eius.&quot;,
+            &quot;created_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;,
+            &quot;updated_at&quot;: &quot;2023-03-25T19:28:08.000000Z&quot;
+        },
+        &quot;likeCount&quot;: 2,
+        &quot;dislikeCount&quot;: 0,
+        &quot;userPostInterest&quot;: &quot;neutral&quot;
+    }
+]</code>
+ </pre>
+    </span>
+<span id="execution-results-GETapi-posts" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-posts"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-posts" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-GETapi-posts" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-posts"></code></pre>
+</span>
+<form id="form-GETapi-posts" data-method="GET"
+      data-path="api/posts"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-posts', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-posts"
+                    onclick="tryItOut('GETapi-posts');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-posts"
+                    onclick="cancelTryOut('GETapi-posts');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-posts" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/posts</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="GETapi-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="GETapi-posts"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        </form>
+
+            
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                                        <button type="button" class="lang-button" data-language-name="bash">bash</button>
+                                                        <button type="button" class="lang-button" data-language-name="javascript">javascript</button>
+                            </div>
+            </div>
+</div>
+</body>
+</html>

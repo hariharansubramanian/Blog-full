@@ -11,3 +11,6 @@
 |
 */
 
+Route::get('/', function () {
+    return redirect('/docs'); // Redirect to API docs
+});
