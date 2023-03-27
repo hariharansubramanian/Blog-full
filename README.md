@@ -104,3 +104,6 @@ Execute`php artisan serve`, and the server should now be hosted at `localhost:80
 
 - Useful SQL queries are available under `Assets/useful_SQL_queries.sql`
 - Database diagram is included under `Assets/bloggerdb_database_diagram.drawio`
+![image info](./Assets/bloggerdb_database_diagram.jpg)
+- Postman collection is included under `Backend/public/docs/collection.json` (see above for instructions on how to
+  generate this)
