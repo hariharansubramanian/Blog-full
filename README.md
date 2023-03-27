@@ -1,4 +1,7 @@
-# Web Server with React, PHP Laravel, and MySQL
+# The Application
+
+A simple blog application built with React, PHP Laravel, and MySQL
+Create, view and perform post interactions
 
 This README contains instructions for setting up and running a web server using React, PHP Laravel, and MySQL. Follow
 the steps below to configure and run each component of the application.
@@ -16,8 +19,7 @@ Make sure you have the following software installed:
 
 ### Windows
 
-Run `Blogfull/start_app.bat` to automatically install dependencies and start the application by simply double clicking
-the file
+Run `Blogfull/start_app.bat` to install dependencies and start the application.
 
 ### Linux
 
@@ -104,6 +106,6 @@ Execute`php artisan serve`, and the server should now be hosted at `localhost:80
 
 - Useful SQL queries are available under `Assets/useful_SQL_queries.sql`
 - Database diagram is included under `Assets/bloggerdb_database_diagram.drawio`
-![image info](./Assets/bloggerdb_database_diagram.jpg)
+  ![image info](./Assets/bloggerdb_database_diagram.jpg)
 - Postman collection is included under `Backend/public/docs/collection.json` (see above for instructions on how to
   generate this)
